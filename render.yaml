@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: avinash-telegram-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: USE_WEBHOOK
+        value: "true"
+      - key: TELEGRAM_WEBHOOK_PATH
+        value: "/telegram/webhook"
+      - key: TELEGRAM_SECRET_TOKEN
+        generateValue: true
